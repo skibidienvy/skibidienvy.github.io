@@ -1,0 +1,26 @@
+"hey... " window
+im envy, im 15
+and people think
+im a catboy or sum
+
+
+
+"socials: " - when clicking over an icon it copies that username
+discord: @impossiblebydesign
+tiktok: @impossiblebydesign
+steam: @skibidienvious
+
+
+
+
+"i worked on... " window - when hovered over one of them display their descriptions , put them in a grid with their icons and name under
+"radium client"
+	minecraft hacked utility mod owned by the popular dev nnpg
+"fern tas"
+	the most advanced subway surfers tassing tool as of writing this
+"relgl"
+	a better remaster of the lgl mod menu template. outdated and deprecated as of writing this.
+
+
+
+all written in lowercaase in the proggy clean font.
