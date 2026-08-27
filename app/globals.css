@@ -865,7 +865,7 @@ body {
     overflow-y: auto;
     padding: max(8px, env(safe-area-inset-top))
       max(8px, env(safe-area-inset-right))
-      max(8px, env(safe-area-inset-bottom))
+      calc(46px + max(8px, env(safe-area-inset-bottom)))
       max(8px, env(safe-area-inset-left));
     overscroll-behavior: contain;
     font-size: clamp(13px, 3.8vw, 16px);
