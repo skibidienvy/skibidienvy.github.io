@@ -287,6 +287,31 @@ body {
   flex: 0 0 auto;
 }
 
+.system-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  padding: 0 12px;
+  border-bottom: 2px solid #fff;
+  background: #000;
+  color: #fff;
+  font-family: 'Proggy Clean', 'Courier New', monospace;
+  font-size: 18px;
+  text-transform: lowercase;
+  pointer-events: none;
+}
+
+.system-bar-right {
+  display: flex;
+  gap: 14px;
+}
+
 .desktop-ui {
   position: absolute;
   inset: 0;
@@ -306,6 +331,37 @@ body {
   color: #fff;
   box-shadow: 7px 7px 0 rgba(255, 255, 255, 0.18);
   pointer-events: auto;
+}
+
+/* Intro: the scene fades up, then each window rises in, staggered. */
+@keyframes scene-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes window-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mountain-scene {
+  animation: scene-fade 0.7s ease both;
+}
+
+.os-window {
+  animation: window-rise 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.desktop-ui .os-window:nth-of-type(1) { animation-delay: 0.18s; }
+.desktop-ui .os-window:nth-of-type(2) { animation-delay: 0.3s; }
+.desktop-ui .os-window:nth-of-type(3) { animation-delay: 0.42s; }
+.desktop-ui .os-window:nth-of-type(4) { animation-delay: 0.54s; }
+.desktop-ui .os-window:nth-of-type(5) { animation-delay: 0.66s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .os-window {
+    animation: scene-fade 0.4s ease both;
+  }
 }
 
 .intro-window {
@@ -513,11 +569,18 @@ body {
   place-items: center;
   width: 58px;
   height: 58px;
+  overflow: hidden;
   border: 1px solid #fff;
   background: #fff;
   color: #000;
   font-size: 32px;
   line-height: 1;
+}
+
+.music-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .music-meta {
@@ -650,12 +713,89 @@ body {
 .music-volume-button:focus-visible {
   outline: none;
   border-color: #fff;
-  background: #fff;
-  color: #000;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 .music-play {
   min-width: 58px;
+}
+
+.music-controls {
+  gap: 6px;
+}
+
+.music-controls .music-control {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.music-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  vertical-align: middle;
+}
+
+.music-icon-prev {
+  border-right: 9px solid currentColor;
+}
+
+.music-icon-next {
+  border-left: 9px solid currentColor;
+}
+
+.music-range {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  min-width: 0;
+  height: 14px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background:
+    linear-gradient(#fff, #fff) 0 / var(--fill, 0%) 100% no-repeat,
+    rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+}
+
+.music-range:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
+.music-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #000;
+  background: #fff;
+  cursor: pointer;
+}
+
+.music-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #000;
+  border-radius: 0;
+  background: #fff;
+  cursor: pointer;
+}
+
+.music-range:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.music-control.is-active,
+.music-volume-button[aria-pressed='true'] {
+  border-color: #fff;
+  background: #fff;
+  color: #000;
 }
 
 .music-volume-row {
@@ -766,7 +906,7 @@ body {
 
 @keyframes meow-scroll {
   to {
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(calc(var(--meow-unit, 50%) * -1), 0, 0);
   }
 }
 
@@ -857,12 +997,14 @@ body {
 
   .desktop-ui {
     position: fixed;
+    inset: 0 0 auto 0;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     gap: clamp(8px, 2.5vw, 12px);
     overflow-x: hidden;
     overflow-y: auto;
-    padding: max(8px, env(safe-area-inset-top))
+    padding: calc(46px + max(8px, env(safe-area-inset-top)))
       max(8px, env(safe-area-inset-right))
       calc(46px + max(8px, env(safe-area-inset-bottom)))
       max(8px, env(safe-area-inset-left));

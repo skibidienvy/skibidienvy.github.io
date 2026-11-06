@@ -12,10 +12,28 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const description = 'im envy (or jamie) and people think im a catboy/transgender or sum';
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://enviouss.org'),
   title: 'enviouss.org',
+  description,
   icons: {
     icon: '/icon.png',
+  },
+  openGraph: {
+    type: 'website',
+    url: 'https://enviouss.org',
+    siteName: 'enviouss.org',
+    title: 'enviouss.org',
+    description,
+    images: [{ url: '/icon.png', width: 736, height: 736, alt: 'envy' }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'enviouss.org',
+    description,
+    images: ['/icon.png'],
   },
 };
 
