@@ -1002,8 +1002,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: clamp(8px, 2.5vw, 12px);
+    pointer-events: auto;
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding: calc(46px + max(8px, env(safe-area-inset-top)))
       max(8px, env(safe-area-inset-right))
       calc(46px + max(8px, env(safe-area-inset-bottom)))
