@@ -109,7 +109,7 @@ export function DesktopWindows() {
             <br />
             catboy/transgender or sum
           </p>
-          <img className="intro-avatar" src="/icons/intro-avatar.png" alt="envy avatar" />
+          <img className="intro-avatar" src="/icons/intro-avatar.png?v=2" alt="envy avatar" />
         </div>
       </DesktopWindow>
 
