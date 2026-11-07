@@ -14,7 +14,7 @@ const socials = [
 ] as const;
 
 const likes = [
-  { name: 'deltarune', icon: '/icons/deltarune.png', iconClass: '' },
+  { name: 'deltarune', icon: '/icons/undertale.svg', iconClass: '' },
   { name: 'portal 2', icon: '/icons/aperture-science.svg', iconClass: '' },
   { name: 'vibecoding', icon: '/icons/claude.svg', iconClass: '' },
 ] as const;
